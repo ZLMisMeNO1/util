@@ -48,7 +48,7 @@ public interface MongoBaseDao<T> {
      * @throws   
      * @author baoqi.zhang
      */
-    public List<T> findAll(Map<String,Object> params,String collectionName) throws Exception;    
+    public List<T> findAll(Map<String,Object> params) throws Exception;    
     /**
      * 
      * @Title: update   修改  
@@ -60,7 +60,7 @@ public interface MongoBaseDao<T> {
      * @throws   
      * @author baoqi.zhang
      */
-    public void update(Map<String,Object> params,String collectionName) throws Exception;   
+    public void update(Map<String,Object> params) throws Exception;   
     //创建集合  
 //    public void createCollection(String collectionName) throws Exception;  
     /**
@@ -74,5 +74,5 @@ public interface MongoBaseDao<T> {
      * @throws   
      * @author baoqi.zhang
      */
-    public void remove(Map<String,Object> params,String collectionName) throws Exception;  
+    public void remove(Map<String,Object> params) throws Exception;  
 }
