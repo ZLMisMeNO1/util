@@ -95,7 +95,9 @@ public final class WebConnectionDto implements Serializable{
 		sb.append("retry:"+ this.retry + "\n");
 		sb.append("event:"+ this.event + "\n");
 		sb.append("data:" + JSONObject.toJSON(this.data) + "\n");
-		log.info("to brower message :" + sb.toString());
+		log.info("to brower message :" + "[id=" + id + ", event=" + event + ", retry="
+				+ retry + ", data=" + data + "]");
+		
 		return sb.toString();
 	}
 
