@@ -76,6 +76,14 @@ public final class WebConnectionDto implements Serializable{
 		this.event = event;
 		this.retry = 5000;
 	}
+	
+	public WebConnectionDto(String event,Integer retry) {
+		super();
+		this.id = sdf.format(new Date());
+		this.event = event;
+		this.retry = retry;
+	}
+	
 	public WebConnectionDto(String id, String event,Integer retry) {
 		super();
 		this.id = id;
