@@ -35,8 +35,16 @@ public class BaseDocument implements Serializable {
 
 	private String uuid = UUIDUtil.uuid();
 	
-	private Timestamp createTime = new Timestamp(System.currentTimeMillis());
+	private Long createTime = System.currentTimeMillis();
 	
+	public Long getCreateTime() {
+		return createTime;
+	}
+
+	public void setCreateTime(Long createTime) {
+		this.createTime = createTime;
+	}
+
 	public Integer getIsDeleted() {
 		return isDeleted;
 	}
@@ -53,12 +61,5 @@ public class BaseDocument implements Serializable {
 		this.uuid = uuid;
 	}
 
-	public Timestamp getCreateTime() {
-		return createTime;
-	}
-
-	public void setCreateTime(Timestamp createTime) {
-		this.createTime = createTime;
-	}
 	
 }

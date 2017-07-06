@@ -20,6 +20,8 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 
+import cn.learner.util.globalDto.PageResult;
+
 /**
  * ClassName:MongoBaseDaoImpl Function: TODO ADD FUNCTION. Date: 2017年7月6日
  * 上午9:22:12
@@ -152,6 +154,39 @@ public class MongoBaseDaoImpl<T extends BaseDocument> implements MongoBaseDao {
 			log.error(e);
 		}
 		
+	}
+
+	@Override
+	public PageResult<T> listPageByNormal(BaseCondition condition)
+			throws Exception {
+		
+		PageResult<T> page = new PageResult<T>();
+		page.setTotal(mongoTemplate.count(BaseCondition.toEqualQuery(condition), entityClass));
+		page.setPageNumber(condition.getPage());
+		page.setPageSize(condition.getRow());
+		page.setRows(mongoTemplate.find(BaseCondition.toPageEqualQueryByNormal(condition),
+				entityClass));
+		
+		return page;
+	}
+
+	@Override
+	public PageResult<T> listPageByTime(BaseCondition condition, Long timeMillis)
+			throws Exception {
+		
+		PageResult<T> page = new PageResult<T>();
+		
+		page.setTotal(mongoTemplate.count(BaseCondition.toEqualQuery(condition), entityClass));
+		
+		page.setPageNumber(condition.getPage());
+		
+		page.setPageSize(condition.getRow());
+		
+		page.setRows(mongoTemplate.find(
+				BaseCondition.toPageEqualQueryByTimeMills(condition,timeMillis),
+				entityClass));
+		
+		return page;
 	}
 
 }

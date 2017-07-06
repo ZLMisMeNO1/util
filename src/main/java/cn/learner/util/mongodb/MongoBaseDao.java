@@ -3,6 +3,8 @@ package cn.learner.util.mongodb;
 import java.io.Serializable;
 import java.util.List;
 
+import cn.learner.util.globalDto.PageResult;
+
 /**
  * 
  * @ClassName: MongoBaseDao
@@ -114,4 +116,29 @@ public interface MongoBaseDao<T extends BaseDocument> {
 	 * @since JDK 1.7
 	 */
 	T get(Serializable id) throws Exception;
+	
+	/**
+	 * 
+	 * listPageByNormal:根据条件  配合 skip 和 limit
+	 * 
+	 * @author baoqi.zhang 
+	 * @param condition
+	 * @return
+	 * @throws Exception 
+	 * @since JDK 1.7
+	 */
+	PageResult<T> listPageByNormal(BaseCondition condition) throws Exception;
+
+	/**
+	 * 
+	 * listPageByTime:根据条件 和给定的时间毫秒值 配合limit使用
+	 * 
+	 * @author baoqi.zhang 
+	 * @param condition
+	 * @param timeMillis
+	 * @return
+	 * @throws Exception 
+	 * @since JDK 1.7
+	 */
+	PageResult<T> listPageByTime(BaseCondition condition,Long timeMillis) throws Exception;
 }
